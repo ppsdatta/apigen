@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/underscore-min.js"></script>
+    <script src="static/js/tether.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/app.js"></script>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/css/tether.min.css"/>
+    <link rel="stylesheet" href="static/css/app.css"/>
+</head>
+<body>
+    <script type="text/template" id="param-template">
+        <div class="form-group" id="param-container" style="padding: 4px; border: 1px solid lightgray">
+            <label for="apiParams">URL parameter</label>
+            <div>
+                <input type="text" name="pname-<%= num %>" class="param-field" placeholder="Name"/>
+                <input type="text" name="ptype-<%= num %>" class="param-field" placeholder="Type"/>   
+                <input type="text" name="pdesc-<%= num %>" class="param-field" size="50" placeholder="Description"/>
+                <br/>
+                <label for="apiMethods">Add for</label>
+                <label class="form-check-label">
+                    <input type="checkbox" name="pall-<%= num %>" class="form-check-input" id="apiMethodsALLP">
+                        ALL
+                </label>
+                <label class="form-check-label">
+                    <input type="checkbox" name="pget-<%= num %>" class="form-check-input" id="apiMethodsGETP">
+                        GET
+                </label>
+                <label class="form-check-label">
+                    <input type="checkbox" name="ppost-<%= num %>" class="form-check-input" id="apiMethodsPOSTP">
+                        POST
+                </label>
+                <label class="form-check-label">
+                    <input type="checkbox" name="pput-<%= num %>" class="form-check-input" id="apiMethodsPUTP">
+                        PUT
+                </label>
+                <label class="form-check-label">
+                    <input type="checkbox" name="pdelete-<%= num %>" class="form-check-input" id="apiMethodsDELETEP">
+                        DELETE
+                </label>
+            </div>
+            <br/>
+            <div>
+                Optional?<input type="checkbox" name="poptional-<%= num %>" style="margin: 6px"></input> 
+            </div>
+        </div>
+    </script>
+    <div class="container">
+        <h4> Such API - Wow!</h4>
+       <br/>
+       <br/>
+        <form class="form-horizontal" method="POST" action="generate" main-form" style="padding: 2px; margin: 6px">
+            <div class="form-group">
+                <label for="apiVersion">Version</label>
+                <input type="number" class="form-control" value="1" id="apiVersion"/>
+            </div>
+            <div class="form-group">
+                <label for="apiCategory">Category</label>
+                <select id="apiCategory" class="form-control">
+                    {% for c in categories %}
+                    <option>{{c}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="apiHandler">Handler function name</label>
+                <input type="text" class="form-control" value="" id="apiHandler"/>
+            </div>
+            <div class="form-group">
+                <label for="apiState">API state</label>
+                <select id="apiState" class="form-control">
+                    <option selected>Live</option>
+                    <option>Internal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="apiMethods">Supporting HTTP methods</label>
+                <br/>
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="apiMethodsGET" onclick="show_hide('docGET')">
+                        GET
+                </label>
+                <br/>
+                <div id="docGET" style="display: none">
+                    <input type="text" name="getsummary" placeholder="Summary"/>
+                    <textarea class="form-control" rows="5" name="getdesc" placeholder="Detailed documentation"></textarea>
+                </div>
+                <br/>
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="apiMethodsPOST" onclick="show_hide('docPOST')">
+                        POST
+                </label>
+                <br/>
+                <div id="docPOST" style="display: none">
+                    <input type="text" name="postsummary" placeholder="Summary"/>
+                    <textarea class="form-control" rows="5" name="postdesc" placeholder="Detailed documentation"></textarea>
+                </div>
+                <br/>
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="apiMethodsPUT" onclick="show_hide('docPUT')">
+                        PUT
+                </label>
+                <br/>
+                <div id="docPUT" style="display: none">
+                    <input type="text" name="putsummary" placeholder="Summary"/>
+                    <textarea class="form-control" rows="5" name="putdesc" placeholder="Detailed documentation"></textarea>
+                </div>
+                <br/>
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" id="apiMethodsDELETE" onclick="show_hide('docDELETE')">
+                        DELETE
+                </label>
+                <br/>
+                <div id="docDELETE" style="display: none">
+                    <input type="text" name="deletesummary" placeholder="Summary"/>
+                    <textarea class="form-control" rows="5" name="deletedesc" placeholder="Detailed documentation"></textarea>
+                </div>
+            </div>
+            <br/>
+            <div id="params-div">
+                
+            </div>
+            <div style="margin: 8px">
+                <input type="button" class="btn btn-outline-primary" value="Add parameter" onclick="add_new('params-div')"/>
+            </div>
+            <hr/>
+            <input type="hidden" name="numparams" id="numparams"/>
+            <button type="submit" class="btn btn-success">Generate</button>
+        </form>
+        <br/>
+        <br/>
+    </div>
+</body>
+</html>
