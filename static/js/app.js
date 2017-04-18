@@ -15,4 +15,16 @@ module.show_hide = function(what) {
     elem.toggle();
 };
 
+module.update_endpoint = function () {
+    var endpoint = 'https://api.projectplace.com/api/v';
+    var version = $('#apiVersion').val();
+    var category = $('#apiCategory').val();
+    endpoint += version + '/' + category + '/';
+    $('#endpoint-hint').html(endpoint);
+};
+
+$(document).ready(function () {
+    module.update_endpoint();
+});
+
 })(window);

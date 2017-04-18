@@ -55,19 +55,26 @@
         <form class="form-horizontal" method="POST" action="generate" main-form" style="padding: 2px; margin: 6px">
             <div class="form-group">
                 <label for="apiVersion">Version</label>
-                <input type="number" class="form-control" value="1" id="apiVersion"/>
+                <input type="number" class="form-control" value="1" name="version" id="apiVersion" onchange="update_endpoint()"/>
             </div>
             <div class="form-group">
                 <label for="apiCategory">Category</label>
-                <select id="apiCategory" class="form-control">
+                <select id="apiCategory" name="category" class="form-control" id="apiCategory" onchange="update_endpoint()">
                     {% for c in categories %}
                     <option>{{c}}</option>
                     {% endfor %}
                 </select>
             </div>
             <div class="form-group">
+                <label for="basic-url">Endpoint</label>
+                <div class="input-group">
+                    <span class="input-group-addon" id="endpoint-hint">https://example.com/users/</span>
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" name="endpoint"/>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="apiHandler">Handler function name</label>
-                <input type="text" class="form-control" value="" id="apiHandler"/>
+                <input type="text" class="form-control" name="handler" value="" id="apiHandler"/>
             </div>
             <div class="form-group">
                 <label for="apiState">API state</label>
