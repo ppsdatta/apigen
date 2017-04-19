@@ -78,7 +78,7 @@
             </div>
             <div class="form-group">
                 <label for="apiState">API state</label>
-                <select id="apiState" class="form-control">
+                <select id="apiState" class="form-control" name="state">
                     <option selected>Live</option>
                     <option>Internal</option>
                 </select>
@@ -87,7 +87,7 @@
                 <label for="apiMethods">Supporting HTTP methods</label>
                 <br/>
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" id="apiMethodsGET" onclick="show_hide('docGET')">
+                    <input type="checkbox" class="form-check-input" id="apiMethodsGET" name="mget" onclick="show_hide('docGET')">
                         GET
                 </label>
                 <br/>
@@ -97,7 +97,7 @@
                 </div>
                 <br/>
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" id="apiMethodsPOST" onclick="show_hide('docPOST')">
+                    <input type="checkbox" class="form-check-input" id="apiMethodsPOST" name="mpost" onclick="show_hide('docPOST')">
                         POST
                 </label>
                 <br/>
@@ -107,7 +107,7 @@
                 </div>
                 <br/>
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" id="apiMethodsPUT" onclick="show_hide('docPUT')">
+                    <input type="checkbox" class="form-check-input" id="apiMethodsPUT" name="mput" onclick="show_hide('docPUT')">
                         PUT
                 </label>
                 <br/>
@@ -117,7 +117,7 @@
                 </div>
                 <br/>
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" id="apiMethodsDELETE" onclick="show_hide('docDELETE')">
+                    <input type="checkbox" class="form-check-input" id="apiMethodsDELETE" name="mdelete" onclick="show_hide('docDELETE')">
                         DELETE
                 </label>
                 <br/>
